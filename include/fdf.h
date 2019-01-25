@@ -6,7 +6,7 @@
 /*   By: eruaud <eruaud@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/25 16:16:22 by eruaud       #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/25 19:05:22 by eruaud      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/25 19:24:01 by eruaud      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,14 @@ typedef struct  t_mlx_params {
     void        *mlx_ptr;
     void        *win_ptr;
 }               s_mlx_params;
+
+typedef struct  t_vector {
+    int         x;
+    int         y;
+    int         z;
+    int         w;
+    int         color;
+}               s_vector;
 
 size_t	        ft_arraylen(void **array);
 

@@ -6,7 +6,7 @@
 /*   By: eruaud <eruaud@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/25 16:15:47 by eruaud       #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/25 19:13:27 by eruaud      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/25 19:32:10 by eruaud      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,17 +78,31 @@ void     **append(void **array, void *new_item)
 
 int     **parse_fdf(int fd)
 {
-    char    *line;
-    char    **split;
-    int     **img_matrix;
+    char        *line;
+    char        **split;
+    s_vector    **vectors;
+    s_vector    *new_vector;
+    int         y;
+    int         x;
 
+    y = 0;
     while (ft_readline(fd, &line) == 1)
     {
         ft_printf("%s\n", line);
         split = ft_strsplit(line, ' ');
-        img_matrix = (int**)append((void**)img_matrix, (void*)split);
+        x = 0;
+        while (split)
+        {
+            if (!(new_vector = ft_memalloc(sizeof(s_vector))))
+                return (NULL);
+            new_vector->x = x;
+            new_vector->y = y;
+            new_vector->z = ft_atoi(split[x]);
+        }
+        vectors = (s_vector**)append((void**)vectors, (void*)split);
+        y++;
     }
-    return (img_matrix);
+    return (vectors);
 }
 
 /*
